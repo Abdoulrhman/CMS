@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.categories.index');
+        $categories = Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+
     }
 
     /**
@@ -35,7 +37,10 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Category::create($input);
+        return redirect('/admin/categories');
+
     }
 
     /**
@@ -57,7 +62,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit' , compact('category'));
     }
 
     /**
@@ -69,7 +75,10 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $category = Category::findOrFail($id);
+        $category->update($input);
+        return redirect('/admin/categories');
     }
 
     /**
@@ -80,6 +89,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect('admin/categories');
     }
 }

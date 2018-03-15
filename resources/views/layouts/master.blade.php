@@ -89,19 +89,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-shopping-cart fa-fw"></i>Categories<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{!! url('/admin/categories'); !!}">View All categories</a>
-                            </li>
-                            <li>
-                                <a href="{!! url('/admin/categories/create'); !!}">Add New Category</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
+                        <a href="{!! url('/admin'); !!}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
 
                     <li>
@@ -117,7 +105,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-edit fa-fw"></i>Profile</a>
+                        <a href="{!! url('/admin/categories'); !!}"><i class="fa fa-edit fa-fw"></i>Categories</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-male fa-fw"></i>Users<span class="fa arrow"></span></a>

@@ -1,10 +1,10 @@
 @extends('layouts.master')
 @section('page_title', 'Posts')
 @section('admin_content')
-    {{--@if(Session::has('deleted_user'))--}}
+    @if(Session::has('deleted_post'))
 
-        {{--<p class="bg-success">{{session('deleted_user')}}</p>--}}
-    {{--@endif--}}
+        <p class="bg-success">{{session('deleted_post')}}</p>
+    @endif
 
     @if(Session::has('create_post'))
 
@@ -31,9 +31,9 @@
                     <td>{{$post->id}}</td>
                     <td><img height="50" class="img-rounded" src="{{$post->photo ? $post->photo->file : 'http://placehold.it/400x400'}} " alt=""></td>
                     <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
-                    <td>{{$post->user->name}}</td>
+                    <td><a href="{!! url('/admin/posts/edit', $post->id); !!}">{{$post->user->name}}</a></td>
                     <td>{{$post->title}}</td>
-                    <td>{{$post->body}}</td>
+                    <td>{{str_limit($post->body , 10)}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->updated_at->diffForhumans()}}</td>
                 </tr>
