@@ -70,7 +70,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+    //
+
     }
 
     /**
@@ -125,5 +126,11 @@ class PostsController extends Controller
 
 
         return redirect('/admin/posts');
+    }
+
+    public function post($id){
+       $post = Post::findOrFail($id);
+       $comments = $post->comments()->whereIsActive(1)->get();
+       return view('post', compact('post','comments'));
     }
 }

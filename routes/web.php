@@ -20,6 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//this is to make route for the post
+Route::get('/post/{id}',['as'=>'home.post','uses'=>'PostsController@post']);
+
+Route::get('/category/{id}',['as'=>'home.category','uses'=>'CategoriesController@category']);
 
 
 
@@ -36,10 +40,18 @@ Route::group(['middleware'=>'admin'],function (){
 
     Route::resource('admin/categories' ,'CategoriesController');
 
+    Route::resource('admin/media' ,'MediaController');
+
+    Route::resource('admin/comments' ,'CommentsController');
+
+    Route::resource('admin/comments/replies' ,'CommentRepliesController');
 
 });
 
+Route::group(['middleware'=>'auth'],function (){
+    Route::post('comment/replay', 'CommentRepliesController@createReplay');
 
 
+});
 
 //template Resources

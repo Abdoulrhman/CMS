@@ -93,4 +93,10 @@ class CategoriesController extends Controller
         $category->delete();
         return redirect('admin/categories');
     }
+
+    public function category($id){
+
+        $category = Category::findOrFail($id);
+       return view('category', compact('category'));
+    }
 }

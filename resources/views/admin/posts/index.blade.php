@@ -20,6 +20,8 @@
             <th>User</th>
             <th>Title</th>
             <th>Body</th>
+            <th>View Post</th>
+            <th>View Comments</th>
             <th>Created-at</th>
             <th>Updated-at</th>
         </tr>
@@ -34,6 +36,8 @@
                     <td><a href="{!! url('/admin/posts/edit', $post->id); !!}">{{$post->user->name}}</a></td>
                     <td>{{$post->title}}</td>
                     <td>{{str_limit($post->body , 10)}}</td>
+                    <td><a href="{!! url('/post',$post->id) !!}">View post</a></td>
+                    <td><a href="{!! url('/admin/comments',$post->id) !!}">View comments </a></td>
                     <td>{{$post->created_at}}</td>
                     <td>{{$post->updated_at->diffForhumans()}}</td>
                 </tr>

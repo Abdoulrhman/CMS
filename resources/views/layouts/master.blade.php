@@ -11,6 +11,8 @@
 
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
+  @yield('styles')
+
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -93,6 +95,19 @@
                     </li>
 
                     <li>
+                        <a href="#"><i class="fa fa-rocket fa-fw"></i>Media<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="{!! url('/admin/media'); !!}"> All Media</a>
+                            </li>
+                            <li>
+                                <a href="{!! url('/admin/media/create'); !!}">Upload New Media</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-second-level -->
+                    </li>
+
+                    <li>
                         <a href="#"><i class="fa fa-rocket fa-fw"></i>Posts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -100,6 +115,10 @@
                             </li>
                             <li>
                                 <a href="{!! url('/admin/posts/create'); !!}">Add New post</a>
+                            </li>
+
+                            <li>
+                                <a href="{!! url('/admin/comments'); !!}">Comments</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -159,6 +178,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{asset('dist/js/sb-admin-2.js')}}"></script>
+@yield('scripts')
 
 </body>
 
